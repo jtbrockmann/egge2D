@@ -11,6 +11,7 @@ public class EGGE2D_DisplaySettings {
 	public int oglx = 640;
 	public int ogly = 360;
 	public int zidx = 128;
+	public int gfps = 60;
 	
 	public String title = "egge2D - Extendgears Game Engine";
 	
@@ -29,6 +30,10 @@ public class EGGE2D_DisplaySettings {
 	
 	public void setTitle(String t) {
 		title = t;
+	}
+	
+	public void setFramerate(int fps) {
+		gfps = fps;
 	}
 
 }

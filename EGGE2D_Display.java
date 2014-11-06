@@ -22,6 +22,7 @@ public class EGGE2D_Display {
 	int oglx;
 	int ogly;
 	int zidx;
+	int gfps;
 	String title;
 	
 	public EGGE2D_Display(EGGE2D_DisplaySettings Settings) {
@@ -31,6 +32,7 @@ public class EGGE2D_Display {
 		oglx = Settings.oglx;
 		ogly = Settings.ogly;
 		zidx = Settings.zidx;
+		gfps = Settings.gfps;
 		title = Settings.title;
 
 		// create window with title
@@ -62,6 +64,7 @@ public class EGGE2D_Display {
 
 		// update the display
 		Display.update();
+		Display.sync(gfps);
 	}
 
 	// requests whether the window is open
