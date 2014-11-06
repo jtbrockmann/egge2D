@@ -9,7 +9,6 @@ import org.lwjgl.opengl.DisplayMode;
 
 // import OpenGL classes
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.util.glu.GLU.gluPerspective;
 
 // creates a LWJGL display
 public class EGGE2D_Display {
@@ -17,7 +16,7 @@ public class EGGE2D_Display {
 
 		// create window with title
 		try {
-			Display.setDisplayMode(new DisplayMode(640, 480));
+			Display.setDisplayMode(new DisplayMode(640, 360));
 			Display.setTitle(title);
 			Display.create();
 		} catch (LWJGLException e) {
@@ -27,8 +26,8 @@ public class EGGE2D_Display {
 		// initialize OpenGL
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		gluPerspective((float) 30, 640f / 480f, 0.0001f, 100);
-		glMatrixMode(GL_MODELVIEW);
+		glViewport(0,0,640,480);
+		glOrtho(0,640,0,360,0,128);
 	}
 
 	// function draw a frame
