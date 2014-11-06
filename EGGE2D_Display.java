@@ -2,6 +2,9 @@
 
 package egge2D;
 
+// import internal functions
+import egge2D.EGGE2D_DisplaySettings;
+
 // import LWJGL classes
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
@@ -12,11 +15,27 @@ import static org.lwjgl.opengl.GL11.*;
 
 // creates a LWJGL display
 public class EGGE2D_Display {
-	public EGGE2D_Display(String title) {
+	
+	// constant display settings
+	int winx;
+	int winy;
+	int oglx;
+	int ogly;
+	int zidx;
+	String title;
+	
+	public EGGE2D_Display(EGGE2D_DisplaySettings Settings) {
+		// get settings
+		winx = Settings.winx;
+		winy = Settings.winy;
+		oglx = Settings.oglx;
+		ogly = Settings.ogly;
+		zidx = Settings.zidx;
+		title = Settings.title;
 
 		// create window with title
 		try {
-			Display.setDisplayMode(new DisplayMode(640, 360));
+			Display.setDisplayMode(new DisplayMode(winx, winy));
 			Display.setTitle(title);
 			Display.create();
 		} catch (LWJGLException e) {
@@ -26,13 +45,13 @@ public class EGGE2D_Display {
 		// initialize OpenGL
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		glViewport(0,0,640,480);
-		glOrtho(0,640,0,360,0,128);
+		glViewport(0, 0, winx, winy);
+		glOrtho(0 ,oglx ,0 ,ogly ,0 ,zidx);
 	}
 
 	// function draw a frame
 	public void updateFrame() {
-
+		
 		// clear OpenGL buffer
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
