@@ -2,6 +2,8 @@
 
 package egge2D;
 
+import egge2D.DefaultScene;
+
 public class EGGE2D_DisplaySettings {
 	
 	// main settings
@@ -15,7 +17,7 @@ public class EGGE2D_DisplaySettings {
 	
 	public String title = "egge2D - Extendgears Game Engine";
 	
-	public EGGE2D_GameScene scene = new EGGE2D_GameScene();
+	public EGGE2D_GameScene scene = new DefaultScene();
 	
 	// functions to set up settings
 	public void setWindowSize(int x, int y) {
