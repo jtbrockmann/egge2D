@@ -73,5 +73,13 @@ public class EGGE2D_Display {
 	public void destroy() {
 		Display.destroy();
 	}
+	
+	// get size
+	public int getWidth() {
+		return oglx;
+	}
+	public int getHeight() {
+		return ogly;
+	}
 
 }

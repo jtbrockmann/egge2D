@@ -20,7 +20,7 @@ public class EGGE2D_Game {
 		// this is the game loop
 		while(display.isOpen()) {
 			// update scene
-			scene.update();
+			scene.update(display.getWidth(), display.getHeight());
 			
 			// draw the frame
 			display.prepareFrame();
