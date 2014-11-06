@@ -15,6 +15,8 @@ public class EGGE2D_DisplaySettings {
 	
 	public String title = "egge2D - Extendgears Game Engine";
 	
+	public EGGE2D_GameScene scene = new EGGE2D_GameScene();
+	
 	// functions to set up settings
 	public void setWindowSize(int x, int y) {
 		winx = x; winy = y;
@@ -34,6 +36,10 @@ public class EGGE2D_DisplaySettings {
 	
 	public void setFramerate(int fps) {
 		gfps = fps;
+	}
+	
+	public void setDefaultScene(EGGE2D_GameScene s) {
+		scene = s;
 	}
 
 }

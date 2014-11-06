@@ -50,18 +50,15 @@ public class EGGE2D_Display {
 		glViewport(0, 0, winx, winy);
 		glOrtho(0 ,oglx ,0 ,ogly ,0 ,zidx);
 	}
-
-	// function draw a frame
-	public void updateFrame() {
-		
+	
+	// clear the old frame
+	public void prepareFrame() {
 		// clear OpenGL buffer
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	}
 
-		// draw frame
-		/* !!! TODO !!!
-		 * EGGE2D_Scene -> update()
-		 * EGGE2D_GameObject -> update */
-
+	// update the frame
+	public void updateFrame() {
 		// update the display
 		Display.update();
 		Display.sync(gfps);
