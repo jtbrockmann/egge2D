@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>egge2D | Documentation</title>
+</head>
+<body>
+<h1>egge2D - Documentation</h1>
+<h2>using egge2D</h2>
+To use egge2D it is important to set up eclipse for working with LWJGL. After that, if the egge2D package is copied to your project, you have to create a new class.
+<hr/>
+<code>
+import egge2D.EGGE2D_Game;<br/>
+import egge2D.EGGE2D_DisplaySettings;<br/><br/>
+
+public class YourGame extends EGGE2D_Game {<br/>
+&nbsp&nbsp	public Game(EGGE2D_DisplaySettings Settings) {<br/>
+&nbsp&nbsp&nbsp&nbsp		super(Settings);<br/>
+&nbsp&nbsp	}<br/><br/>
+
+&nbsp&nbsp	public static void main(String[] args) { <br/>
+&nbsp&nbsp&nbsp&nbsp		// set up the display parameters <br/>
+&nbsp&nbsp&nbsp&nbsp		EGGE2D_DisplaySettings Settings = new EGGE2D_DisplaySettings();<br/>
+&nbsp&nbsp&nbsp&nbsp		Settings.setWindowSize(640, 360);<br/>
+&nbsp&nbsp&nbsp&nbsp		Settings.setOpenGLSize(640, 360);<br/>
+&nbsp&nbsp&nbsp&nbsp		Settings.setFramerate(60);<br/><br/>
+		
+&nbsp&nbsp&nbsp&nbsp		// create the game<br/>
+&nbsp&nbsp&nbsp&nbsp		new Game(Settings);<br/>
+&nbsp&nbsp	}<br/>
+}
+
+</code>
+<hr/>
+
+
+
+
+
+
+Your first Scene should be implemented like this. It is useful to create a package for all your scenes.
+
+
+
+<hr/>
+<code>
+import egge2D.EGGE2D_GameScene;
+<br/><br/>
+public class YourScene extends EGGE2D_GameScene {
+<br/>
+&nbsp&nbsp	public void update(int width, int height) {<br/>
+&nbsp&nbsp&nbsp&nbsp		if(init()) {<br/>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp			// do some initialization stuff<br/>
+&nbsp&nbsp&nbsp&nbsp		}<br/>
+		<br/>
+&nbsp&nbsp&nbsp&nbsp		// this code runs every frame	<br/>
+		
+		
+&nbsp&nbsp}<br/>
+}<br/>
+</code>
+<hr/>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
