@@ -1,21 +1,30 @@
 package egge2D;
 
 import static org.lwjgl.opengl.GL11.*;
+import egge2D.EGGE2D_Texture;
 
 public class EGGE2D_GameObject {
+	EGGE2D_Texture texture;
 	int posx = 0;
 	int posy = 0;
 	int sclx = 16;
 	int scly = 16;
 	int zidx = 0;
 	
+	public EGGE2D_GameObject(EGGE2D_Texture t) {
+		texture = t;
+	}
+	
 	public void draw() {
+		texture.update();
+		texture.startDrawing();
 		glBegin(GL_QUADS);
-			glVertex3f(posx-sclx, posy-scly, 0);
-			glVertex3f(posx+sclx, posy-scly, 0);
-			glVertex3f(posx+sclx, posy+scly, 0);
-			glVertex3f(posx-sclx, posy+scly, 0);
+			texture.getCoord(0); glVertex3f(posx-sclx, posy-scly, -zidx);
+			texture.getCoord(1); glVertex3f(posx+sclx, posy-scly, -zidx);
+			texture.getCoord(2); glVertex3f(posx+sclx, posy+scly, -zidx);
+			texture.getCoord(3); glVertex3f(posx-sclx, posy+scly, -zidx);
 		glEnd();
+		texture.endDrawing();
 	}
 	
 	// absolute position
@@ -24,7 +33,7 @@ public class EGGE2D_GameObject {
 	}
 	// absolute scale
 	public void absScale(int x, int y) {
-		sclx = x; scly = y;
+		sclx = x/2; scly = y/2;
 	}
 	// relative position
 	public void relPosition(int x, int y) {
@@ -32,7 +41,7 @@ public class EGGE2D_GameObject {
 	}
 	// relative scale
 	public void relScale(int x, int y) {
-		sclx = sclx + x; scly = scly + y;
+		sclx = sclx + x/2; scly = scly + y/2;
 	}
 	// get position
 	public int getPositionX() {
@@ -43,10 +52,10 @@ public class EGGE2D_GameObject {
 	}
 	// get scale
 	public int getScaleX() {
-		return sclx;
+		return sclx*2;
 	}
 	public int getScaleY() {
-		return scly;
+		return scly*2;
 	}
 	// set z index
 	public void setZIndex(int z) {

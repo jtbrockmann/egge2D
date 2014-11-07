@@ -30,5 +30,8 @@ public class EGGE2D_GameScene {
 	public static void delObject(String name) {
 		objects.remove(name);
 	}
-
+	
+	public boolean init() {
+		return objects.size()==0;
+	}
 }

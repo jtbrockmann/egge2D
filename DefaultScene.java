@@ -1,16 +1,23 @@
 package egge2D;
 
 import java.util.Arrays;
+import egge2D.EGGE2D_Texture;
+import egge2D.EGGE2D_Image;
+import egge2D.EGGE2D_SolidColor;
 import org.lwjgl.input.Keyboard;
 import egge2D.EGGE2D_GameScene;
 
 public class DefaultScene extends EGGE2D_GameScene{
-	public DefaultScene() {
-		
-	}
+	
 	public void update(int width, int height) {
-		if(objects.size()==0) {
-			int size = 4;
+		if(init()) {
+			EGGE2D_Image smiley = new EGGE2D_Image("smiley");
+			EGGE2D_Image anim = new EGGE2D_Image("animated");
+			EGGE2D_Texture smiley_tex = new EGGE2D_Texture(smiley.getID(), 1, 1, 0);
+			EGGE2D_Texture anim_tex = new EGGE2D_Texture(anim.getID(), 4, 4, 5);
+			EGGE2D_SolidColor font = new EGGE2D_SolidColor(1,1,1,1);
+			
+			int size = 8;
 			int x = width/2;
 			int y = height/2;
 			int[][] lines = {
@@ -22,14 +29,21 @@ public class DefaultScene extends EGGE2D_GameScene{
 			for(int[] q: lines) {
 				int qint = Arrays.asList(lines).indexOf(q);
 				for(int p: q) {
-					addObject("_"+p+"_"+qint, new EGGE2D_GameObject());
-					getObject("_"+p+"_"+qint).absPosition(p*size*2+x-18*2*size, qint*size*2+y-5*4);
+					addObject("_"+p+"_"+qint, new EGGE2D_GameObject(font));
+					getObject("_"+p+"_"+qint).absPosition(p*size+x-18*size, qint*size+y-2*4);
 					getObject("_"+p+"_"+qint).absScale(size, size);
+					getObject("_"+p+"_"+qint).setZIndex(1);
 				}
 			}
-			addObject("cursor", new EGGE2D_GameObject());
+			addObject("cursor", new EGGE2D_GameObject(anim_tex));
 			getObject("cursor").absPosition(width/2, height/2-8*size*2);
-			getObject("cursor").absScale(2, 2);			
+			getObject("cursor").absScale(128, 128);	
+			getObject("cursor").setZIndex(0);
+			
+			addObject("hans", new EGGE2D_GameObject(smiley_tex));
+			getObject("hans").absPosition(width/2+56, height/2-8*size*2);
+			getObject("hans").absScale(128, 128);	
+			getObject("hans").setZIndex(2);
 		}
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_W)) {

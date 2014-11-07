@@ -49,6 +49,18 @@ public class EGGE2D_Display {
 		glLoadIdentity();
 		glViewport(0, 0, winx, winy);
 		glOrtho(0 ,oglx ,0 ,ogly ,0 ,zidx);
+		
+		// texture drawing
+		glEnable(GL_TEXTURE_2D);
+		
+		// texture alpha blending
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+		
+		// enable z buffer
+		glEnable(GL_DEPTH_TEST);
+		//glDepthFunc(GL_LESS);
+		//glDepthFunc(GL_ALWAYS);
 	}
 	
 	// clear the old frame
